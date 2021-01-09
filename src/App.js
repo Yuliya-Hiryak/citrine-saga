@@ -1,12 +1,31 @@
 import React from 'react';
+
+import { makeStyles } from '@material-ui/core/styles';
+
 import Jobs from 'components/Jobs';
 import Employees from 'components/Employees';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+}));
+
 function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-       <Jobs/>
-       <Employees/>
+    <div className={classes.root}>
+      <Jobs/>
+      <main className={classes.content}>
+        <div className={classes.toolbar}/>
+        <Employees/>
+       </main>
     </div>
   );
 }
